@@ -1,0 +1,56 @@
+{
+    "name": "unkown_environment_exploration",
+    "world": "SimpleUnderwater",
+    "package_name": "Ocean",
+    "main_agent": "auv0",
+    "ticks_per_sec": 5,
+    "agents": [
+        {
+            "agent_name": "auv0",
+            "agent_type": "HoveringAUV",
+            "sensors": [
+                {
+                    "sensor_type": "PoseSensor"
+                },
+                {
+                    "sensor_type": "IMUSensor"
+                },
+                {
+                    "sensor_type": "DVLSensor"
+                },
+                {
+                    "sensor_type": "RotationSensor"
+                },
+                {
+                    "sensor_type": "ProfilingSonar",
+                    "sensor_name": "front",
+                    "configuration": {
+                        "ViewRegion": true,
+                        "RangeMin": 0.5,
+                        "RangeMax": 20,
+                        "Elevation": 0.25,
+                        "Azimuth": 120,
+                        "RangeBins": 20,
+                        "AzimuthBins": 20
+                    }                
+                },
+                {
+                    "sensor_type": "ProfilingSonar",
+                    "sensor_name": "depth",
+                    "configuration": {
+                        "ViewRegion": true,
+                        "RangeMin": 0.5,
+                        "RangeMax": 20,
+                        "Elevation": 0.25,
+                        "Azimuth": 120,
+                        "RangeBins": 200,
+                        "AzimuthBins": 200
+                    },
+                    "rotation": [0, 90, 0]                    
+                }
+            ],
+            "control_scheme": 0,
+            "location": [0,0,0]
+        }
+    ]
+}

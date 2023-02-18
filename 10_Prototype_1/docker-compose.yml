@@ -1,0 +1,32 @@
+services:
+  holoocean:
+    build: 
+      context: .
+      dockerfile: ./docker/holoocean/Dockerfile
+    volumes: 
+      - ./src:/project
+      - ./data:/data
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ~/.Xauthority:/home/ue4/.Xauthority
+    working_dir: /project
+    environment:
+      DISPLAY: $DISPLAY
+      QT_X11_NO_MITSHM: 1
+      LIBGL_ALWAYS_INDIRECT: 1
+      SHELL: /bin/bash
+    ports: 
+      - 8888:8888
+    network_mode: "host"
+    runtime: nvidia
+    command: jupyter-lab --no-browser --ip '*' --allow-root --port 8888 --NotebookApp.token=''
+    # command: /bin/bash
+  api:
+    build: 
+      context: .
+      dockerfile: ./docker/api_doc/Dockerfile
+    volumes:
+      - ./src:/project:ro
+      - ../../50_Documentation/20_API_Docs/doc:/docs
+    stdin_open: true 
+    tty: true
+    command: make html

@@ -1,0 +1,38 @@
+{
+    "name": "unkown_environment_exploration",
+    "world": "SimpleUnderwater",
+    "package_name": "Ocean",
+    "main_agent": "auv0",
+    "ticks_per_sec": 60,
+    "agents": [
+        {
+            "agent_name": "auv0",
+            "agent_type": "HoveringAUV",
+            "sensors": [
+                {
+                    "sensor_type": "DVLSensor"
+                },
+                {
+                    "sensor_type": "IMUSensor"
+                },
+                {
+                    "sensor_type": "DepthSensor"
+                },
+                {
+                    "sensor_type": "RangeFinderSensor",
+                    "configuration": {
+                        "LaserCount": 24,
+                        "LaserAngle": 0,
+                        "LaserDebug": true,
+                        "LaserMaxDistance": 100
+                    }
+                },
+                {
+                    "sensor_type": "PoseSensor"
+                }
+            ],
+            "control_scheme": 0,
+            "location": [0,0,0]
+        }
+    ]
+}
